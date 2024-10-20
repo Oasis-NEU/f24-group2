@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commuter Helper App</title>
+</head>
+<body>
+    <h1>Commuter Helper</h1>
+
+    <!-- Form to collect commuter preferences -->
+    <form id="commuterForm">
+        <label for="budget">How much money do you want to spend monthly on transport? (in USD):</label>
+        <input type="number" id="budget" name="budget" required><br><br>
+
+        <label for="commuteTime">What is the most amount of time you want to commute (one-way)? (in minutes):</label>
+        <input type="number" id="commuteTime" name="commuteTime" required><br><br>
+
+        <label for="accessibility">Do you need accessibility for handicapped people?</label>
+        <select id="accessibility" name="accessibility" required>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select><br><br>
+
+        <label for="weather">Consider weather conditions?</label>
+        <select id="weather" name="weather" required>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select><br><br>
+
+        <button type="submit">Find Commute Options</button>
+    </form>
+
+    <!-- Area to display results -->
+    <div id="results"></div>
+
+    <script>
+        // JavaScript to handle form input
+        document.getElementById('commuterForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from refreshing the page
+
+            // Get form values
+            const budget = document.getElementById('budget').value;
+            const commuteTime = document.getElementById('commuteTime').value;
+            const accessibility = document.getElementById('accessibility').value;
+            const weather = document.getElementById('weather').value;
+
+            // Display the collected data (for now)
+            const results = document.getElementById('results');
+            results.innerHTML = `<h2>Your Commute Preferences</h2>
+                                 <p>Budget: $${budget}/month</p>
+                                 <p>Max Commute Time: ${commuteTime} minutes</p>
+                                 <p>Accessibility: ${accessibility}</p>
+                                 <p>Weather Considerations: ${weather}</p>`;
+
+            // MBTA Fares Example (you can fetch data from MBTA later)
+            // For now, let's hardcode an example:
+            const mbtaFare = 90; // Example for a monthly pass
+
+            // Check if user’s budget fits MBTA fare
+            if (budget >= mbtaFare) {
+                results.innerHTML += `<p>You can afford a monthly MBTA pass ($${mbtaFare}).</p>`;
+            } else {
+                results.innerHTML += `<p>Your budget is lower than the MBTA monthly pass fare ($${mbtaFare}).</p>`;
+            }
+
+            // Further logic to handle commute time, accessibility, and weather can be added here
+        });
+    </script>
+</body>
+</html>
