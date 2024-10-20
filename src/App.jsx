@@ -16,7 +16,7 @@ const CoOpCommutePlanner = () => {
             option below to get started and discover the most efficient way to reach your co-op.
           </p>
         </section>
-
+        
         <section style={{ backgroundColor: 'white', display: 'flex', justifyContent: 'center', gap: '20px', paddingTop: '20px' }}>
           <div style={{ padding: '20px', backgroundColor: 'darkgray', color: 'black', textAlign: 'center', flex: '1' }}>
             <h3>CarpoolNU</h3>
